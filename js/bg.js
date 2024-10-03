@@ -1,6 +1,8 @@
 /*--------------------
 Vars
 --------------------*/
+/* PUTTING RANDOM SHIT HERE SO IT COMPILES */
+
 const opt = {
     numStars: 100,
     mouseRadius: 30,
