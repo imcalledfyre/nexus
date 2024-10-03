@@ -5,12 +5,12 @@ $('.column button .card').on('click', function () {
 
     if (nextMenu === 'proxy') {
         if (!config['proxy']) {
-            $('#disabled').showModal();
+            $.showModal();
             return;
         }
         $('#everything-else').fadeOut(300, () => {
             $('#page-loader').fadeIn(200);
-            $('#page-loader iframe').attr('src', config['proxyPath'] || '/proxy');
+            $('#page-loader iframe').attr('src', config['proxyPath'] || 'https://animegirlgyats.vonar.ch');
             $('#page-loader iframe')[0].focus();
         });
         currentMenu = $('#page-loader');
