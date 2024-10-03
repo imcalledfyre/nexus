@@ -8,13 +8,20 @@ $('.column button .card').on('click', function () {
             $.showModal();
             return;
         }
+        
+        // Open the URL in a new tab
+        window.open('https://animegirlgyats.vonar.ch', '_blank');
+
+        // Optionally, you can still show a loader or transition if needed
         $('#everything-else').fadeOut(300, () => {
             $('#page-loader').fadeIn(200);
+            // You can remove this if you don't need the iframe anymore
             $('#page-loader iframe').attr('src', config['proxyPath'] || 'https://animegirlgyats.vonar.ch');
             $('#page-loader iframe')[0].focus();
         });
+
         currentMenu = $('#page-loader');
-        inGame = !preferences.background; // if background is disabled (false) then inGame is set to to true turning off the background
+        inGame = !preferences.background; // if background is disabled (false) then inGame is set to true turning off the background
         return;
     }
 
@@ -23,6 +30,7 @@ $('.column button .card').on('click', function () {
     });
     currentMenu = $('.' + nextMenu);
 });
+
 
 $('logo img').on('click', returnHome);
 $('#gameButton').on('click', returnHome);
