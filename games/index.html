@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tournament Instructions | NEXUS</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1, h2 {
+      color: #333;
+      text-align: center;
+    }
+    p {
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+    ol {
+      margin-bottom: 20px;
+    }
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .button:hover {
+      background-color: #45a049;
+    }
+    .center {
+      text-align: center;
+    }
+    .highlight {
+      font-weight: bold;
+      color: #007bff;
+    }
+    .disabled-link {
+      pointer-events: none;
+      background-color: #ddd !important;
+      color: #aaa !important;
+      cursor: not-allowed;
+    }
+  </style>
+  <script>
+    window.onload = function() {
+      var allowedIP = '1.2.3.4'; // Allowed IP address
+
+      // Function to fetch user's IP address using a free service (replace with your preferred method)
+      function getUserIP(callback) {
+        fetch('https://api64.ipify.org?format=json')
+          .then(response => response.json())
+          .then(data => callback(data.ip))
+          .catch(error => console.error('Error fetching IP: ', error));
+      }
+
+      // Check if user's IP matches the allowed IP
+      function checkIP() {
+        getUserIP(function(userIP) {
+          var playButton = document.getElementById('play-button');
+          if (userIP === allowedIP) {
+            // User's IP is allowed, enable the link and update href
+            playButton.classList.remove('disabled-link');
+            playButton.setAttribute('href', 'play.html'); // Update to actual tournament play URL
+          } else {
+            // User's IP is not allowed, disable the link
+            playButton.classList.add('disabled-link');
+            playButton.setAttribute('href', '#'); // Link to nowhere or keep original
+          }
+        });
+      }
+
+      // Initial check when the page loads
+      checkIP();
+    };
+  </script>
+</head>
+<body>
+  <center>
+    <div class="container">
+      <h1>Welcome to the Tournament!</h1>
+      
+      <p class="center">
+        Hosted by <span class="highlight">Nexus Games</span>
+      </p>
+      
+      <p class="center">
+        Tournament Game: <span class="highlight">Tanuki Sunset</span>
+      </p>
+      
+      <h2>Instructions:</h2>
+      <ol>
+        <li>Enter your name and the tournament key provided.</li>
+        <li>Play the game and achieve your highest score.</li>
+        <li>Press 'U' to download your score file and submit your score.</li>
+        <li>Tournaments go on for the <span class="highlight">First week of each month</span>.</li>
+        <li>Score files are encrypted, and we will know if you try to share score files.</li>
+      </ol>
+
+      <h2>Rules:</h2>
+      <ul>
+        <li>You must use the provided Tournament Key: <span class="highlight">Disabled Currently</span>.</li>
+        <li>Only your highest score will be considered for the tournament.</li>
+        <li>Ensure fair play and enjoy the game!</li>
+      </ul>
+
+      <p class="center">
+        Ready to play? Click the button below to start! <span class="highlight">Note that you must be on a registered school to be able to continue.</span>
+      </p>
+      
+      <p class="center">
+        <a id="play-button" class="button disabled-link" href="#">Launch Tournament</a>
+      </p>
+      
+      <p class="center">
+        <a class="button" href="freeplay.html">Launch Freeplay</a>
+      </p>
+    </div>
+  </center>
+</body>
+</html>
