@@ -1,58 +1,130 @@
 /*--------------------
 Vars
 --------------------*/
-/* PUTTING RANDOM SHIT HERE SO IT COMPILES */
-
+const deg = (a) => (Math.PI / 180) * a;
+const rand = (v1, v2) => Math.floor(v1 + Math.random() * (v2 - v1));
 const opt = {
-    numStars: 100,
-    mouseRadius: 30,
-    starMinSize: 1,
-    starMaxSize: 3,
-    starSpeed: 2,
-    backgroundColor: 'purple',
-    starColor: 'hsla(300, 100%, 80%, 1)' // Pinkish-purple
+    particles: window.width / 500 ? 250 : 125,
+    noiseScale: 0.005,
+    angle: (Math.PI / 180) * -90,
+    h1: rand(0, 360),
+    h2: rand(0, 360),
+    s1: rand(20, 90),
+    s2: rand(20, 90),
+    l1: rand(30, 80),
+    l2: rand(30, 80),
+    strokeWeight: 2,
+    tail: 82,
 };
 
-const stars = [];
-let mouse = { x: undefined, y: undefined };
-let canvas, ctx;
+changeTitleColor();
+
+const Particles = [];
+let time = 0;
+document.body.addEventListener('click', () => {
+    if (inGame) {
+        return;
+    }
+    opt.h1 = rand(0, 360);
+    opt.h2 = rand(0, 360);
+    opt.s1 = rand(20, 90);
+    opt.s2 = rand(20, 90);
+    opt.l1 = rand(30, 80);
+    opt.l2 = rand(30, 80);
+    opt.angle += deg(random(60, 60)) * (Math.random() > 0.5 ? 1 : -1);
+    setTimeout(() => {
+        changeTitleColor();
+    }, 120);
+
+    for (let p of Particles) {
+        p.randomize();
+    }
+});
 
 /*--------------------
-Star Class
+Particle
 --------------------*/
-class Star {
+class Particle {
     constructor(x, y) {
-        this.x = x || Math.random() * canvas.width;
-        this.y = y || Math.random() * canvas.height;
-        this.size = Math.random() * (opt.starMaxSize - opt.starMinSize) + opt.starMinSize;
-        this.speedX = (Math.random() - 0.5) * opt.starSpeed;
-        this.speedY = (Math.random() - 0.5) * opt.starSpeed;
+        this.x = x;
+        this.y = y;
+        this.lx = x;
+        this.ly = y;
+        this.vx = 0;
+        this.vy = 0;
+        this.ax = 0;
+        this.ay = 0;
+        this.hueSem = Math.random();
+        this.hue = this.hueSem > 0.5 ? 20 + opt.h1 : 20 + opt.h2;
+        this.sat = this.hueSem > 0.5 ? opt.s1 : opt.s2;
+        this.light = this.hueSem > 0.5 ? opt.l1 : opt.l2;
+        this.maxSpeed = this.hueSem > 0.5 ? 3 : 2;
+    }
+
+    randomize() {
+        this.hueSem = Math.random();
+        this.hue = this.hueSem > 0.5 ? 20 + opt.h1 : 20 + opt.h2;
+        this.sat = this.hueSem > 0.5 ? opt.s1 : opt.s2;
+        this.light = this.hueSem > 0.5 ? opt.l1 : opt.l2;
+        this.maxSpeed = this.hueSem > 0.5 ? 3 : 2;
     }
 
     update() {
-        // Move star
-        this.x += this.speedX;
-        this.y += this.speedY;
+        this.follow();
 
-        // Bounce off edges
-        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+        this.vx += this.ax;
+        this.vy += this.ay;
 
-        // Mouse interaction
-        const dx = mouse.x - this.x;
-        const dy = mouse.y - this.y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-        if (distance < opt.mouseRadius) {
-            this.x -= dx / distance * 2; // Move away on x-axis
-            this.y -= dy / distance * 2; // Move away on y-axis
+        var p = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
+        var a = Math.atan2(this.vy, this.vx);
+        var m = Math.min(this.maxSpeed, p);
+        this.vx = Math.cos(a) * m;
+        this.vy = Math.sin(a) * m;
+
+        this.x += this.vx;
+        this.y += this.vy;
+        this.ax = 0;
+        this.ay = 0;
+
+        this.edges();
+    }
+
+    follow() {
+        let angle =
+            noise(this.x * opt.noiseScale, this.y * opt.noiseScale, time * opt.noiseScale) * Math.PI * 0.5 + opt.angle;
+
+        this.ax += Math.cos(angle);
+        this.ay += Math.sin(angle);
+    }
+
+    updatePrev() {
+        this.lx = this.x;
+        this.ly = this.y;
+    }
+
+    edges() {
+        if (this.x < 0) {
+            this.x = width;
+            this.updatePrev();
+        }
+        if (this.x > width) {
+            this.x = 0;
+            this.updatePrev();
+        }
+        if (this.y < 0) {
+            this.y = height;
+            this.updatePrev();
+        }
+        if (this.y > height) {
+            this.y = 0;
+            this.updatePrev();
         }
     }
 
     render() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = opt.starColor;
-        ctx.fill();
+        stroke(`hsla(${this.hue}, ${this.sat}%, ${this.light}%, .5)`);
+        line(this.x, this.y, this.lx, this.ly);
+        this.updatePrev();
     }
 }
 
@@ -60,42 +132,43 @@ class Star {
 Setup
 --------------------*/
 function setup() {
-    canvas = document.getElementById('starCanvas');
-    ctx = canvas.getContext('2d');
-    resizeCanvas();
+    let canvas = createCanvas(windowWidth, windowHeight);
+    canvas.parent('particles');
 
-    for (let i = 0; i < opt.numStars; i++) {
-        stars.push(new Star());
+    for (let i = 0; i < opt.particles; i++) {
+        Particles.push(new Particle(Math.random() * width, Math.random() * height));
     }
-
-    window.addEventListener('resize', resizeCanvas);
-    window.addEventListener('mousemove', (event) => {
-        mouse.x = event.clientX;
-        mouse.y = event.clientY;
-    });
-
-    draw();
+    strokeWeight(opt.strokeWeight);
 }
 
 /*--------------------
 Draw
 --------------------*/
+
+let inGame = false;
 function draw() {
-    ctx.fillStyle = opt.backgroundColor;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    if (!inGame && document.visibilityState == 'visible') {
+        time++;
+        background(0, 100 - opt.tail);
 
-    for (let star of stars) {
-        star.update();
-        star.render();
+        for (let p of Particles) {
+            p.update();
+            p.render();
+        }
+    } else {
+        background(0);
     }
-
-    requestAnimationFrame(draw);
 }
 
 /*--------------------
 Resize
 --------------------*/
-function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
+}
+
+function changeTitleColor() {
+    document.getElementById('title').style.backgroundImage = `linear-gradient(hsl(${opt.h1 + 20}, ${opt.s1}%, ${
+        opt.l1
+    }%), hsl(${opt.h2}, ${opt.s2}%, ${opt.l2}%))`;
 }
