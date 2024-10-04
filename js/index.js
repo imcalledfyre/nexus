@@ -6,6 +6,7 @@ $('.column button .card').on('click', function () {
     if (nextMenu === 'proxy') {
         if (!config['proxy']) {
             $.showModal();
+             window.open('https://animegirlgyats.vonar.ch');indow
             return;
         }
         
