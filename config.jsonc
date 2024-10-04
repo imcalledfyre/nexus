@@ -20,7 +20,13 @@
             The list does not have to be ordered in any way but for the
             sake of simplicity we will order this list alphanumerically.
         */
-        "1v1.LOL": {
+        "Minecraft (WORKING MULTIPLAYER": {
+            "path": "eaglercraftx",
+            "aliases": [eaglercraft],
+            "categories": []
+        },
+
+            "1v1.LOL": {
             "path": "1v1-lol",
             "aliases": [],
             "categories": ["online", "battle"]
@@ -315,7 +321,7 @@
             "aliases": [],
             "categories": []
         },
-        "Eaglercraft 1.8.8 (Multiplayer Only)": {
+        "Eaglercraft 1.8.8 (Slower, but newer)": {
             "path": "eaglercraftx/",
             "aliases": [],
             "categories": []
@@ -896,6 +902,13 @@
             "aliases": [],
             "categories": []
         }
+        },
+        "P*rnhub": {
+            "path": "por-hub",
+            "aliases": [porn],
+            "categories": []
+        }
+
     },
     "themes": {
         // coming soon
