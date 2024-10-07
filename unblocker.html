@@ -1,3 +1,138 @@
-<iframe src="https://animegirlgyats.vonar.ch" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;">
-    Erorr: your mom
-</iframe>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unblockers | Nexus</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            color: #333;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        .server-button {
+            font-size: 18px;
+            color: white;
+            background-color: purple;
+            padding: 15px 30px;
+            margin: 20px;
+            display: inline-block;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .server-button.red {
+            background-color: red;
+        }
+
+        .server-button.green {
+            background-color: green;
+        }
+
+        .server-button:hover {
+            opacity: 0.8;
+        }
+
+        #status-message {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #4B0082;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Select a unblocker</h1>
+
+    <div id="status-message">Checking server status...</div>
+    <h3>Red means blocked/down, Green means working!</h3>
+
+    <div class="button-container">
+        <a href="#" id="server1" class="server-button">Server 1</a>
+        <a href="#" id="server2" class="server-button">Server 2</a>
+
+        <!-- Uncomment the following lines to add more servers -->
+        <a href="#" id="server3" class="server-button">Server 3</a>
+        <!-- <a href="#" id="server4" class="server-button">Server 4</a> -->
+        <!-- <a href="#" id="server5" class="server-button">Server 5</a> -->
+        <!-- <a href="#" id="server6" class="server-button">Server 6</a> -->
+        <!-- <a href="#" id="server7" class="server-button">Server 7</a> -->
+        <!-- <a href="#" id="server8" class="server-button">Server 8</a> -->
+        <!-- <a href="#" id="server9" class="server-button">Server 9</a> -->
+        <!-- <a href="#" id="server10" class="server-button">Server 10</a> -->
+        <!-- <a href="#" id="server11" class="server-button">Server 11</a> -->
+        <!-- <a href="#" id="server12" class="server-button">Server 12</a> -->
+        <!-- <a href="#" id="server13" class="server-button">Server 13</a> -->
+        <!-- <a href="#" id="server14" class="server-button">Server 14</a> -->
+        <!-- <a href="#" id="server15" class="server-button">Server 15</a> -->
+        <!-- <a href="#" id="server16" class="server-button">Server 16</a> -->
+        <!-- <a href="#" id="server17" class="server-button">Server 17</a> -->
+        <!-- <a href="#" id="server18" class="server-button">Server 18</a> -->
+        <!-- <a href="#" id="server19" class="server-button">Server 19</a> -->
+        <!-- <a href="#" id="server20" class="server-button">Server 20</a> -->
+    </div>
+
+    <script>
+        // Define the server URLs and the file to check
+        const servers = [
+            { url: 'https://animegirlgyats.vonar.ch/images/astro.png', id: 'server1', baseUrl: 'https://animegirlgyats.vonar.ch' },
+            { url: 'https://hiroshima-was-funny.vonar.ch/images/astro.png', id: 'server2', baseUrl: 'https://hiroshima-was-funny.vonar.ch' },
+
+            // Uncomment the following lines to add more servers
+        { url: 'https://shallow.velolife.co.za/assets/imgs/home.png', id: 'server3', baseUrl: 'https://shallow.velolife.co.za/' },
+            // { url: 'https://server4.com/images/astro.png', id: 'server4', baseUrl: 'https://server4.com' },
+            // { url: 'https://server5.com/images/astro.png', id: 'server5', baseUrl: 'https://server5.com' },
+            // { url: 'https://server6.com/images/astro.png', id: 'server6', baseUrl: 'https://server6.com' },
+            // { url: 'https://server7.com/images/astro.png', id: 'server7', baseUrl: 'https://server7.com' },
+            // { url: 'https://server8.com/images/astro.png', id: 'server8', baseUrl: 'https://server8.com' },
+            // { url: 'https://server9.com/images/astro.png', id: 'server9', baseUrl: 'https://server9.com' },
+            // { url: 'https://server10.com/images/astro.png', id: 'server10', baseUrl: 'https://server10.com' },
+            // { url: 'https://server11.com/images/astro.png', id: 'server11', baseUrl: 'https://server11.com' },
+            // { url: 'https://server12.com/images/astro.png', id: 'server12', baseUrl: 'https://server12.com' },
+            // { url: 'https://server13.com/images/astro.png', id: 'server13', baseUrl: 'https://server13.com' },
+            // { url: 'https://server14.com/images/astro.png', id: 'server14', baseUrl: 'https://server14.com' },
+            // { url: 'https://server15.com/images/astro.png', id: 'server15', baseUrl: 'https://server15.com' },
+            // { url: 'https://server16.com/images/astro.png', id: 'server16', baseUrl: 'https://server16.com' },
+            // { url: 'https://server17.com/images/astro.png', id: 'server17', baseUrl: 'https://server17.com' },
+            // { url: 'https://server18.com/images/astro.png', id: 'server18', baseUrl: 'https://server18.com' },
+            // { url: 'https://server19.com/images/astro.png', id: 'server19', baseUrl: 'https://server19.com' },
+            // { url: 'https://server20.com/images/astro.png', id: 'server20', baseUrl: 'https://server20.com' }
+        ];
+
+        // Function to check server status using the <img> method
+        function checkServerWithImage(server) {
+            const img = new Image();
+            img.onload = function() {
+                document.getElementById(server.id).classList.add('green');
+            };
+            img.onerror = function() {
+                document.getElementById(server.id).classList.add('red');
+            };
+            img.src = server.url;
+            img.style.display = 'none';
+            document.body.appendChild(img);  // Add the image to the page invisibly
+        }
+
+        // Check all servers on page load
+        window.onload = function() {
+            document.getElementById('status-message').innerText = "Checking server status...";
+            servers.forEach(server => {
+                checkServerWithImage(server);
+                // Set button click behavior to open the server's base URL
+                document.getElementById(server.id).addEventListener('click', () => {
+                    window.location.href = server.baseUrl;
+                });
+            });
+        };
+    </script>
+
+</body>
+</html>
