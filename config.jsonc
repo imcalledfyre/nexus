@@ -27,8 +27,8 @@
         },
         "Sonic": {
             "path": "sonic",
-            "aliases": [hedgehog],
-            "categories": ["platformer", "old"]
+            "aliases": [],
+            "categories": []
         },
         "10 minutes till dawn": {
             "path": "10-minutes-till-dawn",
