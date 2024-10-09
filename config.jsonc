@@ -25,11 +25,6 @@
             "aliases": [],
             "categories": ["online", "battle"]
         },
-        "Sonic": {
-            "path": "sonic",
-            "aliases": [],
-            "categories": []
-        },
         "10 minutes till dawn": {
             "path": "10-minutes-till-dawn",
             "aliases": [],
