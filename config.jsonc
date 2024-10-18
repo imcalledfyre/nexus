@@ -20,8 +20,8 @@
             The list does not have to be ordered in any way but for the
             sake of simplicity we will order this list alphanumerically.
         */
-        "1v1.LOL": {
-            "path": "1v1-lol",
+        "Modern Blocky Paint": {
+            "path": "mbp",
             "aliases": [],
             "categories": ["online", "battle"]
         },
