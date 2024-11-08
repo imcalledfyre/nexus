@@ -20,10 +20,10 @@
             The list does not have to be ordered in any way but for the
             sake of simplicity we will order this list alphanumerically.
         */
-        "Modern Blocky Paint": {
-            "path": "mbp",
+        "Fyrecraft": {
+            "path": "ftrecraft",
             "aliases": [],
-            "categories": ["online", "battle"]
+            "categories": ["online", "minecraft"]
         },
         "10 minutes till dawn": {
             "path": "10-minutes-till-dawn",
@@ -311,12 +311,12 @@
             "categories": []
         },
         "Eaglercraft 1.5.2": {
-            "path": "eaglercraft",
+            "path": "fyrecraft",
             "aliases": [],
             "categories": []
         },
         "Eaglercraft 1.8.8 (Multiplayer Only)": {
-            "path": "eaglercraftx/",
+            "path": "fyrecraft",
             "aliases": [],
             "categories": []
         },
