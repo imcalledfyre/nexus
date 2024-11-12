@@ -21,7 +21,7 @@
             sake of simplicity we will order this list alphanumerically.
         */
         "Fyrecraft": {
-            "path": "ftrecraft",
+            "path": "fyrecraft/server.html",
             "aliases": [],
             "categories": ["online", "minecraft"]
         },
