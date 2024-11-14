@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unblockers | Nexus</title>
+    <title>More links | fyre</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -17,7 +17,7 @@
             margin-top: 20px;
         }
 
-        .server-button {
+        .site-button {
             font-size: 18px;
             color: white;
             background-color: purple;
@@ -29,15 +29,15 @@
             transition: background-color 0.3s ease;
         }
 
-        .server-button.red {
+        .site-button.red {
             background-color: red;
         }
 
-        .server-button.green {
+        .site-button.green {
             background-color: green;
         }
 
-        .server-button:hover {
+        .site-button:hover {
             opacity: 0.8;
         }
 
@@ -50,85 +50,85 @@
 </head>
 <body>
 
-    <h1>Select a unblocker</h1>
+    <h1>Select a game site :)</h1>
 
-    <div id="status-message">Checking server status...</div>
-    <h3>Red means blocked/down, Green means working!</h3>
+    <div id="status-message">CHECKING SITES, BE PATIENT (purple = checking)</div>
+    <h3>Red means blocked/down, Green means working, purple means checking!</h3>
 
     <div class="button-container">
-        <a href="#" id="server1" class="server-button">Server 1</a>
-        <a href="#" id="server2" class="server-button">Server 2</a>
+        <a href="#" id="site1" class="site-button">site 1</a>
+        <a href="#" id="site2" class="site-button">site 2</a>
 
-        <!-- Uncomment the following lines to add more servers -->
-        <a href="#" id="server3" class="server-button">Server 3</a>
-        <!-- <a href="#" id="server4" class="server-button">Server 4</a> -->
-        <!-- <a href="#" id="server5" class="server-button">Server 5</a> -->
-        <!-- <a href="#" id="server6" class="server-button">Server 6</a> -->
-        <!-- <a href="#" id="server7" class="server-button">Server 7</a> -->
-        <!-- <a href="#" id="server8" class="server-button">Server 8</a> -->
-        <!-- <a href="#" id="server9" class="server-button">Server 9</a> -->
-        <!-- <a href="#" id="server10" class="server-button">Server 10</a> -->
-        <!-- <a href="#" id="server11" class="server-button">Server 11</a> -->
-        <!-- <a href="#" id="server12" class="server-button">Server 12</a> -->
-        <!-- <a href="#" id="server13" class="server-button">Server 13</a> -->
-        <!-- <a href="#" id="server14" class="server-button">Server 14</a> -->
-        <!-- <a href="#" id="server15" class="server-button">Server 15</a> -->
-        <!-- <a href="#" id="server16" class="server-button">Server 16</a> -->
-        <!-- <a href="#" id="server17" class="server-button">Server 17</a> -->
-        <!-- <a href="#" id="server18" class="server-button">Server 18</a> -->
-        <!-- <a href="#" id="server19" class="server-button">Server 19</a> -->
-        <!-- <a href="#" id="server20" class="server-button">Server 20</a> -->
+        <!-- Uncomment the following lines to add more sites -->
+        <a href="#" id="site3" class="site-button">site 3</a>
+        <a href="#" id="site4" class="site-button">site 4</a>
+        <a href="#" id="site5" class="site-button">site 5</a>
+        <a href="#" id="site6" class="site-button">site 6</a>
+        <a href="#" id="site7" class="site-button">site 7</a>
+        <a href="#" id="site8" class="site-button">site 8</a>
+        <a href="#" id="site9" class="site-button">site 9</a>
+        <!-- <a href="#" id="site10" class="site-button">site 10</a> -->
+        <!-- <a href="#" id="site11" class="site-button">site 11</a> -->
+        <!-- <a href="#" id="site12" class="site-button">site 12</a> -->
+        <!-- <a href="#" id="site13" class="site-button">site 13</a> -->
+        <!-- <a href="#" id="site14" class="site-button">site 14</a> -->
+        <!-- <a href="#" id="site15" class="site-button">site 15</a> -->
+        <!-- <a href="#" id="site16" class="site-button">site 16</a> -->
+        <!-- <a href="#" id="site17" class="site-button">site 17</a> -->
+        <!-- <a href="#" id="site18" class="site-button">site 18</a> -->
+        <!-- <a href="#" id="site19" class="site-button">site 19</a> -->
+        <!-- <a href="#" id="site20" class="site-button">site 20</a> -->
     </div>
 
     <script>
-        // Define the server URLs and the file to check
-        const servers = [
-            { url: 'https://animegirlgyats.vonar.ch/images/astro.png', id: 'server1', baseUrl: 'https://animegirlgyats.vonar.ch' },
-            { url: 'https://hiroshima-was-funny.vonar.ch/images/astro.png', id: 'server2', baseUrl: 'https://hiroshima-was-funny.vonar.ch' },
+        // Define the site URLs and the file to check
+        const sites = [
+            { url: 'https://waverlysucks.bellyfatcat.com', id: 'site1', baseUrl: 'https://waverlysucks.bellyfatcat.com' },
+            { url: 'https://purchase.kiskiscupcakes.com/imgs/refresh.png', id: 'site2', baseUrl: 'https://purchase.kiskiscupcakes.com' },
 
-            // Uncomment the following lines to add more servers
-        { url: 'https://shallow.velolife.co.za/assets/imgs/home.png', id: 'server3', baseUrl: 'https://shallow.velolife.co.za/' },
-            // { url: 'https://server4.com/images/astro.png', id: 'server4', baseUrl: 'https://server4.com' },
-            // { url: 'https://server5.com/images/astro.png', id: 'server5', baseUrl: 'https://server5.com' },
-            // { url: 'https://server6.com/images/astro.png', id: 'server6', baseUrl: 'https://server6.com' },
-            // { url: 'https://server7.com/images/astro.png', id: 'server7', baseUrl: 'https://server7.com' },
-            // { url: 'https://server8.com/images/astro.png', id: 'server8', baseUrl: 'https://server8.com' },
-            // { url: 'https://server9.com/images/astro.png', id: 'server9', baseUrl: 'https://server9.com' },
-            // { url: 'https://server10.com/images/astro.png', id: 'server10', baseUrl: 'https://server10.com' },
-            // { url: 'https://server11.com/images/astro.png', id: 'server11', baseUrl: 'https://server11.com' },
-            // { url: 'https://server12.com/images/astro.png', id: 'server12', baseUrl: 'https://server12.com' },
-            // { url: 'https://server13.com/images/astro.png', id: 'server13', baseUrl: 'https://server13.com' },
-            // { url: 'https://server14.com/images/astro.png', id: 'server14', baseUrl: 'https://server14.com' },
-            // { url: 'https://server15.com/images/astro.png', id: 'server15', baseUrl: 'https://server15.com' },
-            // { url: 'https://server16.com/images/astro.png', id: 'server16', baseUrl: 'https://server16.com' },
-            // { url: 'https://server17.com/images/astro.png', id: 'server17', baseUrl: 'https://server17.com' },
-            // { url: 'https://server18.com/images/astro.png', id: 'server18', baseUrl: 'https://server18.com' },
-            // { url: 'https://server19.com/images/astro.png', id: 'server19', baseUrl: 'https://server19.com' },
-            // { url: 'https://server20.com/images/astro.png', id: 'server20', baseUrl: 'https://server20.com' }
+            // Uncomment the following lines to add more sites
+        { url: 'https://broken', id: 'site3', baseUrl: 'https://broken' },
+            { url: 'https://cat-food.bellyfatcat.com/imgs/refresh.png', id: 'site4', baseUrl: 'https://cat-food.bellyfatcat.com' },
+            { url: 'https://block-fyregames-means-more-links-haha.vonar.ch/imgs/refresh.png', id: 'site5', baseUrl: 'https://block-fyregames-means-more-links-haha.vonar.ch' },
+            { url: 'https://erm-what-the-sigma.vonar.ch/imgs/refresh.png', id: 'site6', baseUrl: 'https://erm-what-the-sigma.vonar.ch' },
+            { url: 'https://classroom.google.com.kiskiscupcakes.com/imgs/refresh.png', id: 'site7', baseUrl: 'https://classroom.google.com.kiskiscupcakes.com.com' },
+            { url: 'https://plz-dont-block-it-costs-so-much-to-make-these.kiskiscupcakes.com/imgs/refresh.png', id: 'site8', baseUrl: 'https://plz-dont-block-it-costs-so-much-to-make-these.kiskiscupcakes.com	' },
+            { url: 'https://storefront.kiskiscupcakes.com/imgs/refresh.png', id: 'site9', baseUrl: 'https://storefront.kiskiscupcakes.com' },
+            // { url: 'https://site10.com/imgs/refresh.png', id: 'site10', baseUrl: 'https://site10.com' },
+            // { url: 'https://site11.com/imgs/refresh.png', id: 'site11', baseUrl: 'https://site11.com' },
+            // { url: 'https://site12.com/imgs/refresh.png', id: 'site12', baseUrl: 'https://site12.com' },
+            // { url: 'https://site13.com/imgs/refresh.png', id: 'site13', baseUrl: 'https://site13.com' },
+            // { url: 'https://site14.com/imgs/refresh.png', id: 'site14', baseUrl: 'https://site14.com' },
+            // { url: 'https://site15.com/imgs/refresh.png', id: 'site15', baseUrl: 'https://site15.com' },
+            // { url: 'https://site16.com/imgs/refresh.png', id: 'site16', baseUrl: 'https://site16.com' },
+            // { url: 'https://site17.com/imgs/refresh.png', id: 'site17', baseUrl: 'https://site17.com' },
+            // { url: 'https://site18.com/imgs/refresh.png', id: 'site18', baseUrl: 'https://site18.com' },
+            // { url: 'https://site19.com/imgs/refresh.png', id: 'site19', baseUrl: 'https://site19.com' },
+            // { url: 'https://site20.com/imgs/refresh.png', id: 'site20', baseUrl: 'https://site20.com' }
         ];
 
-        // Function to check server status using the <img> method
-        function checkServerWithImage(server) {
+        // Function to check site status using the <img> method
+        function checksiteWithImage(site) {
             const img = new Image();
             img.onload = function() {
-                document.getElementById(server.id).classList.add('green');
+                document.getElementById(site.id).classList.add('green');
             };
             img.onerror = function() {
-                document.getElementById(server.id).classList.add('red');
+                document.getElementById(site.id).classList.add('red');
             };
-            img.src = server.url;
+            img.src = site.url;
             img.style.display = 'none';
             document.body.appendChild(img);  // Add the image to the page invisibly
         }
 
-        // Check all servers on page load
+        // Check all sites on page load
         window.onload = function() {
-            document.getElementById('status-message').innerText = "Checking server status...";
-            servers.forEach(server => {
-                checkServerWithImage(server);
-                // Set button click behavior to open the server's base URL
-                document.getElementById(server.id).addEventListener('click', () => {
-                    window.location.href = server.baseUrl;
+            document.getElementById('status-message').innerText = "Checking site status...";
+            sites.forEach(site => {
+                checksiteWithImage(site);
+                // Set button click behavior to open the site's base URL
+                document.getElementById(site.id).addEventListener('click', () => {
+                    window.location.href = site.baseUrl;
                 });
             });
         };
